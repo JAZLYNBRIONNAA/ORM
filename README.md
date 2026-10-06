@@ -1,10 +1,10 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date: 06.10.2026
 
 ## AIM
 To develop a Django Application to store and retrieve data from a Vehicle Service Database platform using Object Relational Mapping(ORM).
 
-## ENTITY RELATIONSHIP DIAGRAM
+
 
 
 
@@ -35,11 +35,30 @@ Apply the migration files of the created app to the database
 Execute Django admin using localhost and create details for 10 entries
 
 ## PROGRAM
+```
+models.py
+from django.db import models
+from django.contrib import admin
+class vehicle_db(models.Model):
+    license_no=models.CharField(max_length=15,primary_key=True)
+    faults_found=models.TextField()
+    owner_name=models.CharField(max_length=30)
+    owner_contact=models.IntegerField()
+    owner_address=models.TextField()
+    deposit_payed=models.FloatField()
+    total_amount=models.FloatField()
+class vehicle_dbAdmin(admin.ModelAdmin):
+    list_display=["license_no","faults_found","owner_name","owner_contact","owner_address","deposit_payed","total_amount"]
 
+admin.py
+from django.contrib import admin
+from.models import vehicle_db,vehicle_dbAdmin
+admin.site.register(vehicle_db,vehicle_dbAdmin)
+```
 
 
 ## OUTPUT
-
+![alt text](<Screenshot (8).png>)
 
 
 ## RESULT
